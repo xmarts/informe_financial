@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_informe_financial_informe_financial,informe_financial.informe_financial,model_informe_financial_informe_financial,,1,0,0,0

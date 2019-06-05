@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo> 
+	<data> 
+		<template id="line_template_inherit" name="custom assets" inherit_id="account_reports.line_template"> 
+			<xpath expr="//t[@t-as='column']" position="after">
+				<!--Aqui se altera para el cambio de moneda y agregar datos a columna cambio_moneda-->
+				<t t-set="column_index" t-value="0"/>
+				<t t-foreach="line.get('columns')" t-as="column">
+					<t t-set="hierarchies_enabled" t-value="len(lines.get('columns_header', [])) > 1"/>
+					<td t-att-class="'o_account_report_line ' + (column.get('class', lines.get('columns_header')[-1][column_index+line.get('colspan', 1)].get('class', '')) + (line.get('unfoldable') and ' o_foldable_total' or '')) + ('' if hierarchies_enabled else ' o_account_report_line_indent')" t-att-style="column.get('style', lines.get('columns_header')[-1][column_index+line.get('colspan', 1)].get('style', ''))">
+						<span class="o_account_report_column_value" t-att-title="column.get('title')">
+							<t t-esc="column.get('cambio_moneda')"/>
+						</span>
+					</td>
+					<t t-set="column_index" t-value="column_index + 1"/>
+				</t>
+			</xpath>
+		</template> 
+	</data> 
+</odoo> 
+
+  
+
